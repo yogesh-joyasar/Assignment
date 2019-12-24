@@ -1,12 +1,11 @@
 package com.example.cityweather.data.network.response
 
 import com.google.gson.annotations.Expose
-
 import com.google.gson.annotations.SerializedName
 
-data class SearchResponse(
+class SearchAPI {
 
-    @SerializedName("search_api")
+    @SerializedName("result")
     @Expose
-    val searchApi: SearchAPI
-)
+    var result = mutableListOf<Result>()
+}

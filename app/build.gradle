@@ -49,12 +49,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofitBuild"
-    implementation "com.squareup.retrofit2:converter-simplexml:$retrofitBuild"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitBuild"
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation "androidx.fragment:fragment-ktx:$androidx"
     implementation "androidx.recyclerview:recyclerview:$androidx"
     implementation "io.reactivex:rxandroid:$rxjava"
+    implementation 'com.readystatesoftware.chuck:library:1.1.0'
 
 
 }

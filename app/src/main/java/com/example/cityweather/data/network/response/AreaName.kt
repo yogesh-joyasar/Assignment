@@ -1,12 +1,13 @@
 package com.example.cityweather.data.network.response
 
 import com.google.gson.annotations.Expose
-
 import com.google.gson.annotations.SerializedName
 
-data class SearchResponse(
-
-    @SerializedName("search_api")
+data class AreaName(
+    @SerializedName("value")
     @Expose
-    val searchApi: SearchAPI
-)
+    private var value: String
+) {
+
+    override fun toString(): String = value
+}

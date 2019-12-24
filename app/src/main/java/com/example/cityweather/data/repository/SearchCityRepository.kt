@@ -1,5 +1,6 @@
 package com.example.cityweather.data.repository
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,10 +19,10 @@ class SearchCityRepository {
     lateinit var cities : LiveData<SearchResponse>
     val data: MutableLiveData<SearchResponse> = MutableLiveData()
 
-    fun searchCity(searchString : String, apiKey : String){
+    fun searchCity(apiKey : String, searchString : String,format:String, context : Context){
 
 
-        RestClient.api(BASE_URL).getCities(searchString, apiKey)
+        RestClient.api(BASE_URL,context).getCities( apiKey, searchString,format)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : ApiSuccess<SearchResponse>(){
