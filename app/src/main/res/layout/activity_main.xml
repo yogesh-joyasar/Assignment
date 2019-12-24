@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--    <data>-->
+
+    <!--        <import type="android.view.View"/>-->
+
+    <!--        <variable-->
+    <!--            name="search"-->
+    <!--            type="com.example.cityweather.ui.viewmodel.SearchCityViewModel" />-->
+
+    <!--    </data>-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp5"
+        tools:context=".MainActivity">
+
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/idAutoCompleteSearchCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@android:drawable/ic_search_category_default" />
+
+    </RelativeLayout>
+
+</layout>
