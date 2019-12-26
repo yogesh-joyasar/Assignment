@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val cities = arrayListOf<String>()
 
         adapter = ArrayAdapter<String>(this, android.R.layout.select_dialog_item, cities)
-        idAutoCompleteSearchCity.threshold = 4
+        idAutoCompleteSearchCity.threshold = 3
         idAutoCompleteSearchCity.setAdapter(adapter)
 
         viewModel =
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         idAutoCompleteSearchCity.addTextChangedListener(
             object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
-                    if(s.toString().length > 4){
+                    if(s.toString().length > 3){
                         viewModel.searchCity(idAutoCompleteSearchCity.text.toString(), apiKey, format, applicationContext)
                     }
                 }
