@@ -1,32 +1,22 @@
 package com.example.cityweather.ui.viewmodel
 
 import android.content.Context
-import android.hardware.Camera
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.cityweather.data.db.AppDatabase
 import com.example.cityweather.data.repository.HistoryRepository
 import com.example.cityweather.ui.models.AreaName
+import javax.inject.Inject
 
-class HistoryViewModel(val context: Context) : ViewModel() {
-
-    private val repository : HistoryRepository
+class HistoryViewModel @Inject constructor(private val repository: HistoryRepository) : ViewModel() {
 
     lateinit var allCityHistory : LiveData<AreaName>
 
-    init {
+    fun insert(area: AreaName) : Long{
+        return repository.insert(area)
+    }
 
-        val areaNameDao = AppDatabase.getDatabase(context).areaNameDao()
-        repository = HistoryRepository(areaNameDao)
+    fun getHistory(context: Context): LiveData<AreaName>{
         allCityHistory = repository.getHistory()
-    }
-
-
-    fun insert(areaName: AreaName) {
-        repository.insert(areaName)
-    }
-
-    fun getHistory(): LiveData<AreaName>{
         return allCityHistory
     }
 }

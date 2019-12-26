@@ -5,6 +5,6 @@ class CommonVariables {
 
     object Constants{
         const val SELECTED_CITY = "selectedCity"
-        const val DB_NAME = "area_database"
+        const val DB_NAME = "area_database.db"
     }
 }

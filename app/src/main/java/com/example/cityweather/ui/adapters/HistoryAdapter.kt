@@ -9,8 +9,10 @@ import com.example.cityweather.R
 import com.example.cityweather.ui.models.AreaName
 import kotlinx.android.synthetic.main.list_item_city.view.*
 
-class HistoryAdapter(val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class HistoryAdapter(val context: Context) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
     var list = mutableListOf<AreaName>()
+
+    var onItemClick: ((pos: Int, view: View) -> Unit)? = null
 
     override fun getItemCount(): Int {
         return list.size
@@ -33,8 +35,17 @@ class HistoryAdapter(val context: Context) : RecyclerView.Adapter<ViewHolder>() 
         list.clear()
         notifyDataSetChanged()
     }
+
+    inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view),View.OnClickListener{
+        val cityName = view.idTvCityName
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View) {
+            onItemClick?.invoke(adapterPosition, v)
+        }
+    }
 }
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    val cityName = view.idTvCityName
-}

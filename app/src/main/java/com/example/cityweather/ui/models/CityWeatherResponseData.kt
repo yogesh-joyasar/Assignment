@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName
 data class CityWeatherResponseData(
     @SerializedName("request")
     @Expose
-    val request : MutableList<City>,
+    val request: MutableList<City>,
     @SerializedName("current_condition")
     @Expose
-    val current_condition : MutableList<CurrentCondition>
+    val current_condition: MutableList<CurrentCondition>
 
 ) {
 

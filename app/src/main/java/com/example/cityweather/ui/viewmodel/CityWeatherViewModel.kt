@@ -4,16 +4,16 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.cityweather.data.repository.CityWeatherRepository
+import com.example.cityweather.data.repository.SearchCityRepository
+import com.example.cityweather.ui.models.CityWeatherResponse
 import com.example.cityweather.ui.models.SearchResponse
+import javax.inject.Inject
 
+class CityWeatherViewModel @Inject constructor(private val repository: CityWeatherRepository): ViewModel() {
 
-class CityWeatherViewModel : ViewModel() {
-
-    private val cityweather: LiveData<SearchResponse>
-    private val repository: CityWeatherRepository
+    private val cityweather: LiveData<CityWeatherResponse>
 
     init {
-        repository = CityWeatherRepository()
         cityweather = repository.getCityWeather()
     }
 
@@ -21,7 +21,7 @@ class CityWeatherViewModel : ViewModel() {
         repository.searchCityWeather(selectedCity, context)
     }
 
-    fun getCityLiveData(): LiveData<SearchResponse> {
+    fun getCityLiveData(): LiveData<CityWeatherResponse> {
         return repository.getCityWeather()
     }
 }

@@ -4,29 +4,31 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.cityweather.data.network.Api
 import com.example.cityweather.data.network.RestClient
 import com.example.cityweather.data.network.core.ApiFail
 import com.example.cityweather.data.network.core.ApiSuccess
 import com.example.cityweather.data.network.core.HttpErrorResponse
-import com.example.cityweather.ui.models.SearchResponse
+import com.example.cityweather.ui.models.CityWeatherResponse
 import com.example.cityweather.util.BASE_URL
 import com.example.cityweather.util.apiKey
 import com.example.cityweather.util.format
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 
-class CityWeatherRepository {
+class CityWeatherRepository @Inject constructor(private val api: Api) {
 
-    val data: MutableLiveData<SearchResponse> = MutableLiveData()
+    val data: MutableLiveData<CityWeatherResponse> = MutableLiveData()
 
     fun searchCityWeather(selectedCity: String, context: Context) {
 
-
-        RestClient.api(BASE_URL, context).getCities(apiKey, selectedCity, format)
+        api.getCityWeather(apiKey, selectedCity, format)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiSuccess<SearchResponse>() {
-                override fun call(t: SearchResponse?) {
+            .subscribe(object : ApiSuccess<CityWeatherResponse>() {
+                override fun call(t: CityWeatherResponse?) {
+                    Log.i("Success", "Success")
                     data.value = t
                 }
 
@@ -47,7 +49,7 @@ class CityWeatherRepository {
     }
 
 
-    fun getCityWeather(): LiveData<SearchResponse> {
+    fun getCityWeather(): LiveData<CityWeatherResponse> {
         return data
     }
 }

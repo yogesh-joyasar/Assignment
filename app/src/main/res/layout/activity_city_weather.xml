@@ -1,83 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <data>
-
-        <variable
-            name="city"
-            type="com.example.cityweather.ui.models.SearchResponse"
-            />
-    </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/idLlIcon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp5">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idIvIcon"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp70"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop" />
 
-        <ImageView
-            android:id="@+id/img_city_image"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/city_item_image_height"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/txt_city_name"
-            android:layout_width="0dp"
+    <LinearLayout
+        android:layout_below="@id/idLlIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idTvCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Mumbai"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idTvHumidity"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
-            android:gravity="center_horizontal"
-            android:text="@{city.name}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_city_image" />
-
-        <TextView
-            android:id="@+id/txt_humidity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:gravity="center_horizontal"
-            android:text="Humidity"
-            android:textAppearance="?attr/textAppearanceSubtitle2"
+            android:gravity="center"
             android:textColor="?attr/colorAccent"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_city_name" />
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txt_weather"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idTvWeather"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:gravity="center_horizontal"
-            android:text="Weather"
-            android:textAppearance="?attr/textAppearanceSubtitle2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_humidity" />
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center_horizontal" />
 
-        <TextView
-            android:id="@+id/txt_temperature"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idTvTemperature"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
             android:gravity="center_horizontal"
-            android:text="Temperature"
-            android:textAppearance="?attr/textAppearanceSubtitle2"
             android:textColor="?attr/colorAccent"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_weather" />
+            android:textStyle="bold" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    </LinearLayout>
+</RelativeLayout>
+
 
 
