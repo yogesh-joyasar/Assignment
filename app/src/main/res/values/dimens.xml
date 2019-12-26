@@ -3,9 +3,12 @@
     <dimen name="dp15">15dp</dimen>
     <dimen name="dp5">5dp</dimen>
 
+
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_extra_small">4dp</dimen>
 
     <dimen name="city_item_image_height">95dp</dimen>
+
+    <dimen name="sp15">15sp</dimen>
 </resources>
