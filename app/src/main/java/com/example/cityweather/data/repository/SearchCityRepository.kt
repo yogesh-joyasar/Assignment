@@ -8,15 +8,13 @@ import com.example.cityweather.data.network.RestClient
 import com.example.cityweather.data.network.core.ApiFail
 import com.example.cityweather.data.network.core.ApiSuccess
 import com.example.cityweather.data.network.core.HttpErrorResponse
-import com.example.cityweather.data.network.response.SearchResponse
-import com.example.cityweather.ui.models.City
+import com.example.cityweather.ui.models.SearchResponse
 import com.example.cityweather.util.BASE_URL
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 class SearchCityRepository {
 
-    lateinit var cities : LiveData<SearchResponse>
     val data: MutableLiveData<SearchResponse> = MutableLiveData()
 
     fun searchCity(apiKey : String, searchString : String,format:String, context : Context){

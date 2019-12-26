@@ -3,7 +3,7 @@ package com.example.cityweather.ui.viewmodel
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.cityweather.data.network.response.SearchResponse
+import com.example.cityweather.ui.models.SearchResponse
 import com.example.cityweather.data.repository.SearchCityRepository
 
 

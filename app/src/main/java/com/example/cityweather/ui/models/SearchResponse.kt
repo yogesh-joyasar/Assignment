@@ -1,7 +1,6 @@
-package com.example.cityweather.data.network.response
+package com.example.cityweather.ui.models
 
 import com.google.gson.annotations.Expose
-
 import com.google.gson.annotations.SerializedName
 
 data class SearchResponse(

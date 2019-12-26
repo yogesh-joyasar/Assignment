@@ -1,6 +1,6 @@
 package com.example.cityweather.data.network
 
-import com.example.cityweather.data.network.response.SearchResponse
+import com.example.cityweather.ui.models.SearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable
