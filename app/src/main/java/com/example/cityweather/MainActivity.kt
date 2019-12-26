@@ -1,5 +1,6 @@
 package com.example.cityweather
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,10 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.cityweather.ui.models.AreaName
 import com.example.cityweather.ui.viewmodel.SearchCityViewModel
-import com.example.cityweather.util.apiKey
-import com.example.cityweather.util.format
-import com.example.cityweather.util.hideKeyboard
-import com.example.cityweather.util.toast
+import com.example.cityweather.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -63,7 +61,12 @@ class MainActivity : AppCompatActivity() {
         
         idAutoCompleteSearchCity.setOnItemClickListener { parent, view, position, id ->
             hideKeyboard(this)
-            parent.getItemAtPosition(position).toString().toast(applicationContext)
+            val selectedCity = parent.getItemAtPosition(position).toString()
+            selectedCity.toast(applicationContext)
+
+            val intent = Intent(this,ShowWeatherActivity::class.java)
+            intent.putExtra(CommonVariables.Constants.SELECTED_CITY, selectedCity)
+            startActivity(intent)
         }
     }
 }
