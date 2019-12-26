@@ -11,6 +11,8 @@ import com.example.cityweather.ui.models.AreaName
 import com.example.cityweather.ui.viewmodel.SearchCityViewModel
 import com.example.cityweather.util.apiKey
 import com.example.cityweather.util.format
+import com.example.cityweather.util.hideKeyboard
+import com.example.cityweather.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -57,5 +59,11 @@ class MainActivity : AppCompatActivity() {
             adapter.clear()
             adapter.addAll(t.searchApi.result[0].areaName)
         })
+        
+        
+        idAutoCompleteSearchCity.setOnItemClickListener { parent, view, position, id ->
+            hideKeyboard(this)
+            parent.getItemAtPosition(position).toString().toast(applicationContext)
+        }
     }
 }
