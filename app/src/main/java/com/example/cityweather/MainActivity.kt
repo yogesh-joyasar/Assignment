@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.cityweather.ui.adapters.HistoryAdapter
 import com.example.cityweather.ui.models.AreaName
+import com.example.cityweather.ui.viewmodel.HistoryViewModel
 import com.example.cityweather.ui.viewmodel.SearchCityViewModel
 import com.example.cityweather.util.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private val cities = mutableListOf<AreaName>()
     private lateinit var viewModel : SearchCityViewModel
+    private lateinit var historyViewModel : HistoryViewModel
     private lateinit var adapter: ArrayAdapter<AreaName>
 
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = ArrayAdapter<AreaName>(this, android.R.layout.select_dialog_item, cities)
         viewModel = ViewModelProviders.of(this).get(SearchCityViewModel::class.java)
+        historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel::class.java)
 
         idAutoCompleteSearchCity.addTextChangedListener(
             object : TextWatcher{
@@ -66,7 +70,18 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this,ShowWeatherActivity::class.java)
             intent.putExtra(CommonVariables.Constants.SELECTED_CITY, selectedCity)
+            val areaName = AreaName(1, selectedCity)
+            historyViewModel.insert(areaName)
             startActivity(intent)
         }
+
+        val historyAdapter = HistoryAdapter(applicationContext)
+        idRvSearchHistory.adapter = historyAdapter
+
+        historyViewModel.getHistory().observe(this, Observer { t ->
+            historyAdapter.clear()
+            historyAdapter.addAll(t)
+        })
+
     }
 }

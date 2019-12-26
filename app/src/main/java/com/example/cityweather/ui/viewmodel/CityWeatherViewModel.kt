@@ -7,11 +7,6 @@ import com.example.cityweather.data.repository.CityWeatherRepository
 import com.example.cityweather.ui.models.SearchResponse
 
 
-/**
- * Created by Sanket Mendon on 2019-12-26,
- * Capgemini India Ltd
- * sanket.mendon@capgemini.com
- */
 class CityWeatherViewModel : ViewModel() {
 
     private val cityweather: LiveData<SearchResponse>

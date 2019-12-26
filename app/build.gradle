@@ -10,6 +10,7 @@ ext{
     retrofitBuild = "2.7.0"
     androidx = "1.1.0"
     rxjava = "1.2.1"
+    androidArch = "1.1.1"
 }
 
 android {
@@ -50,12 +51,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofitBuild"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitBuild"
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitBuild"
+    implementation "android.arch.lifecycle:extensions:$androidArch"
     implementation "androidx.fragment:fragment-ktx:$androidx"
     implementation "androidx.recyclerview:recyclerview:$androidx"
     implementation "io.reactivex:rxandroid:$rxjava"
     implementation 'com.readystatesoftware.chuck:library:1.1.0'
+    implementation "android.arch.persistence.room:runtime:$androidArch"
+    annotationProcessor "android.arch.persistence.room:compiler:$androidArch"
 
 
 }

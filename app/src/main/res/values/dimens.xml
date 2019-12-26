@@ -8,7 +8,11 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_extra_small">4dp</dimen>
 
-    <dimen name="city_item_image_height">95dp</dimen>
+    <dimen name="city_item_image_height">30dp</dimen>
 
     <dimen name="sp15">15sp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_side_margin">5dp</dimen>
+    <dimen name="header_margin">20dp</dimen>
 </resources>

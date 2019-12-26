@@ -15,12 +15,6 @@ import com.example.cityweather.util.format
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-
-/**
- * Created by Sanket Mendon on 2019-12-26,
- * Capgemini India Ltd
- * sanket.mendon@capgemini.com
- */
 class CityWeatherRepository {
 
     val data: MutableLiveData<SearchResponse> = MutableLiveData()
