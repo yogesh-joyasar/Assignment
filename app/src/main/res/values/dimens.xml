@@ -8,7 +8,8 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_extra_small">4dp</dimen>
 
-    <dimen name="city_item_image_height">95dp</dimen>
+    <dimen name="city_item_icon_width">30dp</dimen>
+    <dimen name="city_item_icon_height">30dp</dimen>
 
     <dimen name="sp15">15sp</dimen>
 </resources>

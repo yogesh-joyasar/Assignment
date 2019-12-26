@@ -4,17 +4,12 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.cityweather.data.repository.CityWeatherRepository
+import com.example.cityweather.ui.models.CityWeatherResponse
 import com.example.cityweather.ui.models.SearchResponse
 
-
-/**
- * Created by Sanket Mendon on 2019-12-26,
- * Capgemini India Ltd
- * sanket.mendon@capgemini.com
- */
 class CityWeatherViewModel : ViewModel() {
 
-    private val cityweather: LiveData<SearchResponse>
+    private val cityweather: LiveData<CityWeatherResponse>
     private val repository: CityWeatherRepository
 
     init {
@@ -26,7 +21,7 @@ class CityWeatherViewModel : ViewModel() {
         repository.searchCityWeather(selectedCity, context)
     }
 
-    fun getCityLiveData(): LiveData<SearchResponse> {
+    fun getCityLiveData(): LiveData<CityWeatherResponse> {
         return repository.getCityWeather()
     }
 }
