@@ -12,8 +12,7 @@ interface AreaNameDao {
     @Insert
     fun insert(areaName: AreaName):Long
 
-    @Query("Select * from area_name order by id desc limit 10")
-    fun getAreaNames(): LiveData<AreaName>
-
+    @Query("Select * from area_name group by area_name order by id desc limit 10 ")
+    fun getAreaNames(): List<AreaName>
 
 }

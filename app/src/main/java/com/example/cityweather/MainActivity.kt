@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
+import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -17,6 +17,9 @@ import com.example.cityweather.ui.viewmodel.SearchCityViewModel
 import com.example.cityweather.util.*
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
+import rx.android.schedulers.AndroidSchedulers
+import rx.functions.Action1
+import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: SearchCityViewModel
     private lateinit var historyViewModel: HistoryViewModel
     private lateinit var adapter: ArrayAdapter<String>
+    lateinit var historyAdapter : HistoryAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,24 +87,29 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ShowWeatherActivity::class.java)
             intent.putExtra(CommonVariables.Constants.SELECTED_CITY, selectedCity)
             val area = AreaName(selectedCity)
-            historyViewModel.insert(area)
+            var id = historyViewModel.insert(area)
+            Log.i("Id", id.toString())
             startActivity(intent)
         }
 
-        val historyAdapter = HistoryAdapter(applicationContext)
+        historyAdapter = HistoryAdapter(applicationContext)
         idRvSearchHistory.adapter = historyAdapter
-
-        historyViewModel.getHistory(applicationContext).observe(this, Observer { t ->
-            if(t != null){
-                idRvSearchHistory.visibility = View.VISIBLE
-                historyAdapter.addAll(t)
-            }
-        })
 
         historyAdapter.onItemClick = { pos, view ->
             val intent = Intent(this, ShowWeatherActivity::class.java)
             intent.putExtra(CommonVariables.Constants.SELECTED_CITY, historyAdapter.list.get(pos).value)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        var list = historyViewModel.getHistory()
+        historyAdapter.clear()
+        for (areaName in list){
+            historyAdapter.addAll(areaName)
+        }
+
     }
 }

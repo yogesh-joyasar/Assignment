@@ -1,7 +1,6 @@
 package com.example.cityweather.ui.viewmodel
 
-import android.content.Context
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.cityweather.data.repository.HistoryRepository
 import com.example.cityweather.ui.models.AreaName
@@ -9,14 +8,14 @@ import javax.inject.Inject
 
 class HistoryViewModel @Inject constructor(private val repository: HistoryRepository) : ViewModel() {
 
-    lateinit var allCityHistory : LiveData<AreaName>
-
+    lateinit var allCityHistory : List<AreaName>
     fun insert(area: AreaName) : Long{
         return repository.insert(area)
     }
 
-    fun getHistory(context: Context): LiveData<AreaName>{
+    fun getHistory(): List<AreaName>{
         allCityHistory = repository.getHistory()
+        Log.i("List", allCityHistory.size.toString())
         return allCityHistory
     }
 }
