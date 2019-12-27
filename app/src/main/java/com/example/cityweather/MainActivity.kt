@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     if(s.toString().length > 3){
-                        viewModel.searchCity(idAutoCompleteSearchCity.text.toString(), apiKey, format, applicationContext)
+                        viewModel.searchCity(idAutoCompleteSearchCity.text.toString(), apiKey, format)
                     }
                 }
 

@@ -19,7 +19,7 @@ class SearchCityRepository @Inject constructor( private val api: Api){
 
     val data: MutableLiveData<SearchResponse> = MutableLiveData()
 
-    fun searchCity(apiKey : String, searchString : String,format:String, context : Context){
+    fun searchCity(apiKey : String, searchString : String,format:String){
 
         api.getCities( apiKey, searchString,format)
             .subscribeOn(Schedulers.io())
@@ -47,7 +47,7 @@ class SearchCityRepository @Inject constructor( private val api: Api){
     }
 
 
-    fun getAllCities(): LiveData<SearchResponse>{
+    fun getAllCities(): MutableLiveData<SearchResponse>{
         return data
     }
 }

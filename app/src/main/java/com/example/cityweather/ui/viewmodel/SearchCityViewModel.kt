@@ -1,12 +1,10 @@
 package com.example.cityweather.ui.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cityweather.data.repository.HistoryRepository
-import com.example.cityweather.ui.models.SearchResponse
 import com.example.cityweather.data.repository.SearchCityRepository
-import com.example.cityweather.ui.models.AreaName
+import com.example.cityweather.ui.models.SearchResponse
 import javax.inject.Inject
 
 
@@ -18,11 +16,11 @@ class SearchCityViewModel @Inject constructor( private val repository: SearchCit
         cities = repository.getAllCities()
     }
 
-    fun searchCity(searchString : String, apiKey : String, format: String, context : Context) {
-        repository.searchCity( apiKey,searchString, format, context)
+    fun searchCity(searchString : String, apiKey : String, format: String) {
+        repository.searchCity( apiKey,searchString, format)
     }
 
-    fun getSearchCityLiveData(): LiveData<SearchResponse>{
+    fun getSearchCityLiveData(): MutableLiveData<SearchResponse>{
         return repository.getAllCities()
     }
 
